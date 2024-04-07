@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
+
+import { PaypalModule } from './paypal/paypal.module';
 
 @Module({
-  imports: [UsersModule],
+  imports: [PaypalModule],
   controllers: [],
   providers: [],
 })
