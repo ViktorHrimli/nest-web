@@ -3,7 +3,7 @@ import { handleResponse } from '../helpers/HendlerResponse';
 
 var { BASE } = process.env;
 
-const captureOrder = async (orderID: number) => {
+const captureOrder = async (orderID: string) => {
   const accessToken = await generateAccessToken();
   const url = `${BASE}/v2/checkout/orders/${orderID}/capture`;
 
