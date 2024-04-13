@@ -6,6 +6,7 @@ import {
   Res,
   HttpStatus,
   Body,
+  Param,
 } from '@nestjs/common';
 import { PaypalService } from './paypal.service';
 import { BodyPayPal } from '../libs/dto/BodyPaypalDtos';
@@ -49,4 +50,40 @@ export class PaypalController {
         .json({ error: 'Failed to create order.' });
     }
   }
+
+  @Post('/api/orders/:orderID/capture')
+  async captureOrders(@Param() param: any, @Res() res: Response) {
+    try {
+      const { orderID } = param;
+      const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
+      res.status(httpStatusCode).json(jsonResponse);
+    } catch (error) {
+      console.error('Failed to create order:', error);
+      res.status(500).json({ error: 'Failed to capture order.' });
+    }
+  }
+
+  // app.post("/api/confirmOrder", async (req, res) => {
+  //   try {
+  //     const accessToken = await generateAccessToken();
+  //     console.log(accessToken);
+  //     const response = await fetch(
+  //       "https://www.sandbox.paypal.com/graphql?ApproveGooglePayPayment",
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify(req.body),
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       }
+  //     );
+
+  //     console.log(response, "WTF");
+  //     res.json(response);
+  //   } catch (error) {
+  //     console.error("Ошибка при обработке запроса к PayPal:", error);
+  //     res.status(500).json({ error: "Ошибка при обработке запроса" });
+  //   }
+  // });
 }
