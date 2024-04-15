@@ -1,3 +1,3 @@
 export class BodyPayPal {
-  cart: [any];
+  cart: [{ id: string; price: string }];
 }

@@ -1,11 +1,9 @@
 import { generateAccessToken } from './PaypalAccessToken';
 import { handleResponse } from '../helpers/HendlerResponse';
 
-var { BASE } = process.env;
-
 const captureOrder = async (orderID: string) => {
   const accessToken = await generateAccessToken();
-  const url = `${BASE}/v2/checkout/orders/${orderID}/capture`;
+  const url = `${process.env.BASE}/v2/checkout/orders/${orderID}/capture`;
 
   const response = await fetch(url, {
     method: 'POST',

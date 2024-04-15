@@ -1,13 +1,4 @@
-import {
-  Controller,
-  Post,
-  Get,
-  HttpCode,
-  Res,
-  HttpStatus,
-  Body,
-  Param,
-} from '@nestjs/common';
+import { Controller, Post, Res, HttpStatus, Body, Param } from '@nestjs/common';
 import { BodyPayPal } from '../libs/dto/BodyPaypalDtos';
 import { Response } from 'express';
 import {
@@ -22,6 +13,7 @@ export class PaypalController {
   async getToken(@Res() res: Response): Promise<any> {
     try {
       const { jsonResponse } = await generateClientToken();
+
       res.status(HttpStatus.OK).json(jsonResponse);
       return jsonResponse;
     } catch (error) {
@@ -39,7 +31,7 @@ export class PaypalController {
   ): Promise<any> {
     try {
       const { cart } = body;
-      const { jsonResponse, httpStatusCode } = await createOrder(cart);
+      const { jsonResponse } = await createOrder(cart);
       res.status(HttpStatus.OK).json(jsonResponse);
     } catch (error) {
       console.error('Failed to create order:', error);

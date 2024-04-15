@@ -1,14 +1,12 @@
-var { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, BASE } = process.env;
-
 const generateAccessToken = async () => {
   try {
-    if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
+    if (!process.env.PAYPAL_CLIENT_ID || !process.env.PAYPAL_CLIENT_SECRET) {
       throw new Error('MISSING_API_CREDENTIALS');
     }
     const auth = Buffer.from(
-      PAYPAL_CLIENT_ID + ':' + PAYPAL_CLIENT_SECRET,
+      process.env.PAYPAL_CLIENT_ID + ':' + process.env.PAYPAL_CLIENT_SECRET,
     ).toString('base64');
-    const response = await fetch(`${BASE}/v1/oauth2/token`, {
+    const response = await fetch(`${process.env.BASE}/v1/oauth2/token`, {
       method: 'POST',
       body: 'grant_type=client_credentials',
       headers: {
