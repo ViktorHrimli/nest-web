@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { PaypalModule } from './paypal/paypal.module';
+import { SenderModule } from './sender/sender.module';
 
 @Module({
   imports: [
-    PaypalModule,
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+    PaypalModule,
+    SenderModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}
