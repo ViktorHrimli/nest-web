@@ -1,9 +1,7 @@
-import uniqid from 'uniqid';
+import qqid from 'uniqid';
 import path from 'path';
 
 import { diskStorage } from 'multer';
-
-// var upload_path = path.resolve('/uploads');
 
 var storage = diskStorage({
   destination: (req: any, file: any, cb: any) => {
@@ -12,7 +10,7 @@ var storage = diskStorage({
   filename: (req: any, file: any, cb: any) => {
     var [, extension] = file.originalname.split('.');
 
-    cb(null, `test.${extension}`);
+    cb(null, `${qqid()}.${extension}`);
   },
 });
 
