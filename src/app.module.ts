@@ -2,13 +2,16 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { PaypalModule } from './paypal/paypal.module';
-import { SenderModule } from './sender/sender.module';
+
+import { ImageMenegerController } from './image-meneger/image-meneger.controller';
+import { ImageMenegerModule } from './image-meneger/image-meneger.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     PaypalModule,
-    SenderModule,
+    ImageMenegerModule,
   ],
+  controllers: [ImageMenegerController],
 })
 export class AppModule {}
