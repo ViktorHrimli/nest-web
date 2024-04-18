@@ -6,7 +6,7 @@ interface IObj {
   message: string;
 }
 
-const sendPulseSendInfo = async ({ name, email, message }: IObj) => {
+const sendPulseSendInfo = ({ name, email, message }: IObj) => {
   sendpulse.smtpSendMail((data: any) => console.log(data), {
     html: ` 
     <html>
@@ -39,7 +39,7 @@ const sendPulseSendInfo = async ({ name, email, message }: IObj) => {
   });
 };
 
-const sendPulseSendPhoto = async (url: string) => {
+const sendPulseSendPhoto = (url: string) => {
   sendpulse.smtpSendMail((data: any) => console.log(data), {
     html: ` 
     <html>
