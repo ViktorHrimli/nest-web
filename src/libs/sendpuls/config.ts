@@ -15,8 +15,6 @@ const optionsAccesTokenRes: IOptionsToken = {
   client_secret: process.env.API_SECRET,
 };
 
-console.log(process.env.CLODUNARI_ACCES_TOKEN_URL);
-
 var funcServiceFethc = () =>
   axios
     .post(process.env.CLODUNARI_ACCES_TOKEN_URL, optionsAccesTokenRes)
