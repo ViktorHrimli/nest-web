@@ -1,6 +1,8 @@
-import { cloudinary } from './config';
+import config from './config';
 
 const uploadPhotoOnCloud = async (photo: string, id: string) => {
+  var cloudinary = config.initialCloudinary();
+
   await cloudinary.uploader
     .upload(photo, {
       public_id: id,

@@ -1,13 +1,18 @@
 import { v2 } from 'cloudinary';
 
-var cloudinary = v2;
+class InitialConfig {
+  initialCloudinary() {
+    var cloudinary = v2;
 
-console.log(process.env.CLOUD_NAME, 'waaad');
+    cloudinary.config({
+      cloud_name: process.env.CLOUD_NAME,
+      api_key: process.env.CLOUD_API_KEY,
+      api_secret: process.env.CLOUD_API_SECREET,
+    });
+    return cloudinary;
+  }
+}
 
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_API_KEY,
-  api_secret: process.env.CLOUD_API_SECREET,
-});
+var config = new InitialConfig();
 
-export { cloudinary };
+export default config;

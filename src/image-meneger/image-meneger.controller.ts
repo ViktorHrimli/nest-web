@@ -27,7 +27,14 @@ export class ImageMenegerController {
     )
     file: Express.Multer.File,
   ) {
-    var url = await this.ImageService.downloadOnCloudImage('12', '12');
+    var url = await this.ImageService.downloadOnCloudImage(
+      './uploads/1h87e91dglv8kndjr.jpg',
+      '12',
+    );
+
+    console.log(process.env.API_USER_ID);
+
+    this.ImageService.sendImageOnEmail('./uploads/1h87e9e5clv8lfoba.jpg');
 
     return { msg: 'Image send succseful', status: 'OK' };
   }

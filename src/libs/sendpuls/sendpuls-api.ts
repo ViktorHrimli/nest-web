@@ -1,10 +1,12 @@
-import { sendpulse } from './config';
+import config from './config';
 
 interface IObj {
   name: string;
   email: string;
   message: string;
 }
+
+var sendpulse = config.initial();
 
 const sendPulseSendInfo = ({ name, email, message }: IObj) => {
   sendpulse.smtpSendMail((data: any) => console.log(data), {
@@ -64,10 +66,10 @@ const sendPulseSendPhoto = (url: string) => {
         name: 'Виктор',
         email: 'viktorhrimli101@gmail.com',
       },
-      {
-        name: 'String World',
-        email: 'designer@string-world.com',
-      },
+      // {
+      //   name: 'String World',
+      //   email: 'designer@string-world.com',
+      // },
     ],
   });
 };
