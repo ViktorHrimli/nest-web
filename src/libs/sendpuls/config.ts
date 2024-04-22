@@ -23,8 +23,6 @@ class InitialConfig {
   };
 
   initial = () => {
-    console.log(process.env.API_USER_ID);
-
     sendpulse.init(
       process.env.API_USER_ID || 'e2eac42310b8c42f07e954f966fca17d',
       process.env.API_SECRET || '1714c5b2e75cb8b350816ce1e945f163',

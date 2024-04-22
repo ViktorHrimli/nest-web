@@ -8,6 +8,8 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import fs from 'fs/promises';
+import qqid from 'uniqid';
 
 import { ImageMenegerService } from './image-meneger.service';
 import { storage } from '../libs/storage_img/storage_img';
@@ -27,15 +29,16 @@ export class ImageMenegerController {
     )
     file: Express.Multer.File,
   ) {
-    var url = await this.ImageService.downloadOnCloudImage(
-      './uploads/1h87e91dglv8kndjr.jpg',
-      '12',
-    );
+    var filePath = `${file.destination}/${file.filename}`;
 
-    console.log(process.env.API_USER_ID);
+    var url = await this.ImageService.downloadOnCloudImage(filePath, qqid());
 
-    this.ImageService.sendImageOnEmail('./uploads/1h87e9e5clv8lfoba.jpg');
+    this.ImageService.sendImageOnEmail(url);
 
-    return { msg: 'Image send succseful', status: 'OK' };
+    fs.unlink(filePath)
+      .then(() => 'File destroy')
+      .catch((e: any) => console.log(e.message));
+
+    return { msg: url, status: 'OK' };
   }
 }
