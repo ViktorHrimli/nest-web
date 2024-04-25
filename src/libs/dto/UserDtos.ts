@@ -1,5 +1,11 @@
-export class UsersDto {
+import { IsString, IsEmail, IsNotEmpty } from 'class-validator';
+
+export class UserMessageDto {
+  @IsString()
   name: string;
-  lastName: string;
-  age: boolean;
+  @IsEmail()
+  email: string;
+  @IsString()
+  @IsNotEmpty()
+  message: string;
 }

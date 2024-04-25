@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { uploadPhotoOnCloud } from '../libs/cloudinary_api/upload_img';
-import {
-  sendPulseSendPhoto,
-  sendPulseSendInfo,
-} from '../libs/sendpuls/sendpuls-api';
+import { sendPulseSendPhoto } from '../libs/sendpuls/sendpuls-api';
 
 @Injectable()
 export class ImageMenegerService {
@@ -14,9 +11,5 @@ export class ImageMenegerService {
 
   async sendImageOnEmail(url: string) {
     sendPulseSendPhoto(url);
-  }
-
-  async sendInfoCostumer() {
-    sendPulseSendInfo({ name: 'awdaw', email: 'awdawd', message: 'awdawd' });
   }
 }
