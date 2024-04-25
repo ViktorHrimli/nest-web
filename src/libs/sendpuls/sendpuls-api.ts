@@ -33,10 +33,10 @@ const sendPulseSendInfo = ({ name, email, message }: IObj) => {
         name: 'Виктор',
         email: 'viktorhrimli101@gmail.com',
       },
-      {
-        name: 'String World',
-        email: 'designer@string-world.com',
-      },
+      // {
+      //   name: 'String World',
+      //   email: 'designer@string-world.com',
+      // },
     ],
   });
 };

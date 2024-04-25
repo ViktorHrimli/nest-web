@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 
 import { PaypalModule } from './paypal/paypal.module';
 import { ImageMenegerModule } from './image-meneger/image-meneger.module';
-import { UserMessangerController } from './user-messanger/user-messanger.controller';
+
 import { UserMessangerModule } from './user-messanger/user-messanger.module';
 
 @Module({
@@ -13,6 +13,5 @@ import { UserMessangerModule } from './user-messanger/user-messanger.module';
     ImageMenegerModule,
     UserMessangerModule,
   ],
-  controllers: [UserMessangerController],
 })
 export class AppModule {}
