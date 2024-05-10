@@ -11,6 +11,7 @@ import { ImageMenegerModule } from './image-meneger/image-meneger.module';
 
 import { UserMessangerModule } from './user-messanger/user-messanger.module';
 import { TestMiddleware } from './middleware/test.middleware';
+import { LiqpayModule } from './liqpay/liqpay.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { TestMiddleware } from './middleware/test.middleware';
     PaypalModule,
     ImageMenegerModule,
     UserMessangerModule,
+    LiqpayModule,
   ],
 })
 export class AppModule implements NestMiddleware {
