@@ -29,6 +29,6 @@ export class UserMessangerController {
   async doGetMessage() {
     const now = moment().tz('Europe/Kiev');
     var curDate = now.format('YYYY-MM-DD HH:mm:ss:SSS');
-    return { date: curDate };
+    return { status: curDate };
   }
 }
