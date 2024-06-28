@@ -13,6 +13,8 @@ import { UserMessangerModule } from './user-messanger/user-messanger.module';
 import { TestMiddleware } from './middleware/test.middleware';
 import { LiqpayModule } from './liqpay/liqpay.module';
 
+import { NotificationsModule } from './notifications/notifications.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true, cache: true }),
@@ -20,16 +22,8 @@ import { LiqpayModule } from './liqpay/liqpay.module';
     ImageMenegerModule,
     UserMessangerModule,
     LiqpayModule,
+    NotificationsModule,
   ],
+  controllers: [],
 })
-export class AppModule implements NestMiddleware {
-  constructor() {}
-  use(req: any, res: any, next: (error?: any) => void) {
-    next();
-  }
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(TestMiddleware)
-      .forRoutes({ path: 'ab*cd', method: RequestMethod.DELETE });
-  }
-}
+export class AppModule {}
